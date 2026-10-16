@@ -1,86 +1,80 @@
-<h1>Phishing Campaign</h1>
+# Phishing Awareness Simulation Lab
 
+## Project overview
 
-<h2>Description</h2>
-This project involves setting up a simulated phishing campaign using GoPhish to test security awareness among a targeted group of users.
-The goal of this project is to evaluate user susceptibility to phishing attacks and improve cybersecurity awareness through controlled simulations.
-<br />
+This project documents an **authorized security-awareness simulation** built with GoPhish in a controlled lab environment.
 
+The purpose was to understand the administrative workflow behind phishing-awareness testing: preparing a campaign, configuring training content, defining test recipients, launching the simulation, and reviewing results from a defensive/security-awareness perspective.
 
-<h2>Languages and Utilities Used</h2>
+> **Scope:** Use only with systems and recipients you own or are explicitly authorized to test. Do not collect or retain real credentials.
 
-- <b>Gophish</b> 
-- <b>Railway</b>
+## Technologies
 
-<h2>Environments Used </h2>
+- GoPhish
+- Railway
+- Windows 11
+- web-based campaign administration
 
-- <b>Windows 11</b> (21H2)
+## What I configured
 
-<h2>Program walk-through:</h2>
+### 1. Deploy the GoPhish lab
 
-<p align="center">
-1. Setting Up Gophish on Railway
+I deployed a GoPhish instance through Railway and verified that the administrative interface was reachable.
 
-Sign up on Railway using GitHub and authorize the Railway App.
+![GoPhish deployment](https://i.imgur.com/yvPL5pK.png)
 
-Review and agree to the Terms of Service and Fair Use Policy if prompted.
+### 2. Access the administrative interface
 
-Deploy the Gophish one-click starter template on Railway.
+I retrieved the lab administrator credentials from the deployment output and signed in to the GoPhish management console.
 
-Configure deployment settings and launch Gophish on the default Railway domain.<br/>
-<img src=https://i.imgur.com/yvPL5pK.png height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-2. Accessing the Gophish Admin Interface
+![GoPhish admin interface](https://i.imgur.com/imyZ4Ns.png)
 
-After deployment, find login credentials in the deployment logs.
+### 3. Prepare awareness-campaign components
 
-Access the Gophish admin server using the provided username and password.<br/>
-<img src=https://i.imgur.com/imyZ4Ns.png height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-3. Configuring Campaign Elements
+I configured the components required for an internal simulation:
 
-Users & Groups - Define target users who will receive phishing emails.
+- test users/groups
+- an awareness email template
+- a sending profile for the authorized lab
+- a training/landing page used for simulation purposes
 
-Phishing Email Templates - Create custom emails, including attachments.
+![Campaign configuration](https://i.imgur.com/l4iMdw0.png)
 
-Sending Profiles - Configure SMTP relay details for email delivery.
+![Campaign configuration](https://i.imgur.com/yJl0pLe.png)
 
-Landing Pages - Set up fake login pages for credential capture. <br/>
-<img src="https://i.imgur.com/l4iMdw0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/yJl0pLe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/EUpffFh.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/UAMogAB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+![Campaign configuration](https://i.imgur.com/EUpffFh.png)
 
-<br />
-<br />
-4. Launching the Phishing Campaign
+![Campaign configuration](https://i.imgur.com/UAMogAB.png)
 
-Navigate to the Campaigns page in Gophish.
+### 4. Launch the controlled simulation
 
-Click "New Campaign" and fill in the required fields.
+I assembled the configured components into a GoPhish campaign and launched the test against the authorized target group.
 
-Use pre-configured templates for emails, landing pages, and sending profiles.
+![Campaign launched](https://i.imgur.com/Egqa9Vz.png)
 
-Set the URL for the Gophish listener.
+## Defensive lessons
 
-Click "Launch Campaign" to initiate the phishing simulation. You now have a Live campaign! <br/>
-<img src="https://i.imgur.com/Egqa9Vz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Need to know : 
-When setting up a phishing campaign for ethical hacking, penetration testing, or security awareness training, it’s crucial to configure your Virtual Private Server (VPS) properly to prevent email spoofing. Email spoofing can cause your emails to be flagged as spam or outright blocked. <br/>
-<br />
+This lab reinforced several security concepts:
 
-</p>
+- phishing simulations require explicit authorization and defined scope
+- sending infrastructure and domain reputation affect message delivery
+- awareness testing should minimize collection of sensitive data
+- simulation results are most useful when paired with user education and measurable follow-up
+- security teams should document scope, approvals, retention, and remediation before running exercises
 
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
+## Production considerations
+
+A mature awareness program should include:
+
+- written authorization and rules of engagement
+- test accounts or non-sensitive training inputs
+- privacy/legal review where required
+- secure handling and short retention of simulation data
+- controlled sender infrastructure
+- SPF, DKIM, and DMARC awareness
+- metrics such as reporting rate and training completion
+- remediation and repeat testing
+
+## Portfolio takeaway
+
+This project demonstrates familiarity with security-awareness tooling and the operational considerations surrounding authorized phishing simulations. It is presented as a **defensive training lab**, not as a credential-harvesting or unauthorized social-engineering exercise.
